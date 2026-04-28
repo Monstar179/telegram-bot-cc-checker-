@@ -32,7 +32,7 @@ if (!$conn) {
 
 //do processing here
 
-require "/home/arturo/www/MultiHilos/CardProcessor.php";
+require __DIR__ . "/MultiHilos/CardProcessor.php";
 require __DIR__ . "/Encryptions/Encryptions_Adyen.php";
 require __DIR__ . '/Telegram.php';
 require __DIR__ . '/MysqliDb.php';
