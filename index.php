@@ -14,16 +14,20 @@ header("Content-Length: $size");
 ob_end_flush();
 flush();
 // --- यहाँ से पेस्ट करें ---
+// --- यहाँ से पुराना डेटाबेस कोड हटाकर इसे डालें ---
 $host = getenv('DB_HOST');
 $user = getenv('DB_USER');
 $pass = getenv('DB_PASS');
 $db   = getenv('DB_NAME');
 
-$conn = mysqli_connect($host, $user, $pass, $db);
-
-if (!$conn) {
-    error_log("Connection failed: " . mysqli_connect_error());
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    error_log("Connection failed: " . $e->getMessage());
 }
+// --- यहाँ तक ---
+
 // --- यहाँ तक पेस्ट करें ---
 
 
