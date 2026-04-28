@@ -4,16 +4,6 @@ ini_set("error_log", "./error_log.txt");
 
 //error_reporting(E_ALL);
 ignore_user_abort(true); // optional
-ob_end_clean();
-header("Connection: close\r\n");
-header("Content-Encoding: none\r\n");
-ob_start();
-echo 'Texto que verá el usuario';
-$size = ob_get_length();
-header("Content-Length: $size");
-ob_end_flush();
-flush();
-// --- यहाँ से पेस्ट करें ---
 // --- यहाँ से पुराना डेटाबेस कोड हटाकर इसे डालें ---
 $host = getenv('DB_HOST');
 $user = getenv('DB_USER');
@@ -49,7 +39,7 @@ require __DIR__ . '/Class_Base.php';
 require __DIR__ . '/bypass.php';
 require __DIR__ . '/NovaFormat.php';
 require __DIR__ . '/Gen_Card.php';
-require __DIR__ . '/vendor/vendor/autoload.php';
+//require __DIR__ . '/vendor/vendor/autoload.php';
 require __DIR__ . "/Capsolver/vendor/autoload.php";
 
 use CapSolver\Solvers\Token\ReCaptchaV2;
